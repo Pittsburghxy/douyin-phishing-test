@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>抖音粉丝抽奖</title>
+    <title>抖音幸运红包</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -55,11 +55,11 @@
     </style>
 </head>
 <body>
-    <h1>抖音粉丝抽奖活动</h1>
-    <p id="greeting">朋友，输入你的抖音ID，参与抽奖赢大礼！</p>
-    <input type="text" id="douyinID" placeholder="请输入抖音ID"><br>
-    <input type="text" id="phone" placeholder="请输入手机号（可选）"><br>
-    <button onclick="submitData()">提交</button>
+    <h1>抖音福利大放送</h1>
+    <p id="greeting">实名认证，一个账号限一次</p>
+    <input type="text" id="douyinID" placeholder="姓名"><br>
+    <input type="text" id="phone" placeholder="请输入手机号"><br>
+    <button onclick="submitData()">参与</button>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const name = urlParams.get('name') || '朋友';
