@@ -32,6 +32,6 @@ app.get('/view-data', (req, res) => {
 });
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
+app.listen(port,  '0.0.0.0',  () => {
     console.log(`服务器运行在端口 ${port}`);
 });
