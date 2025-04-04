@@ -62,8 +62,8 @@
     <button onclick="submitData()">参与</button>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
-        const name = urlParams.get('name') || '朋友';
-        document.getElementById('greeting').innerText = `${name}，输入你的抖音ID，参与抽奖赢大礼！`;
+        const name = urlParams.get('name') || '抽奖';
+        document.getElementById('greeting').innerText = `${name}，一个账号限一次`;
 
         function submitData() {
             let id = document.getElementById("douyinID").value;
